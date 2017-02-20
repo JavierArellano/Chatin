@@ -1,0 +1,20 @@
+{
+  "name": "primera_app",
+  "version": "0.0.1",
+  "description": "ejemplo",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/server.js"
+  },
+  "author": "Javier Arellano",
+  "license": "ISC",
+  "dependencies": {
+    "delivery": "0.0.6",
+    "express": "^4.14.1",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
