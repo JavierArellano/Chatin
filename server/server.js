@@ -17,11 +17,11 @@ io.on('connection', function(socket){
 	console.log('user connected');
 	socket.on('mensaje', function(data){
 		console.log('mensaje: '+data);
-		io.emit('mensaje', data);
+		io.broadcast.emit('mensaje', data);
 	})
 	socket.on('disconnect', function(){
 		console.log('user disconnected');
 	})
 })
 //puerto en el que estoy escuchando
-server.listen(process.env.PORT || 3000, console.log('funca en el: '+ process.env.PORT));
+server.listen(process.env.PORT || 3000, console.log('funca en el: 3000'+ process.env.PORT));

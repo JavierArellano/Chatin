@@ -1,3 +1,4 @@
-ul{
-	position: fixed;
+#cont{
+	display: flex;
+	align-items: baseline;
 }
