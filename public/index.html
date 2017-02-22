@@ -6,17 +6,137 @@
     <link rel="stylesheet" href="main.css">
 	<noscript>JavaScript no esta habilitado</noscript>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="dialog.js"></script>
 </head>
 <body>
-<h1>Chatín</h1>
-<div>
-	<ul id="messages"></ul>
+<!-- Login -->
+<div id="show1">
+	<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+            	<h1 class="text-center login-title">Inicia sesión para entrar a Chatín</h1>
+                <img class="profile-img" src="/img/p.jpg">
+                <form class="form-signin" onsubmit="return false;">
+                <input id="nombre" type="text" class="form-control" placeholder="Nombre de Usuario" autofocus>
+                <input id="estado" type="text" class="form-control" placeholder="Estado">
+                <button class="btn btn-lg btn-primary btn-block" onclick='mostrar()'>Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+	</div>
 </div>
-<div id="cont">
-	<input id="texto" autocomplete="on" placeholder="Escribe tu mensaje aquí">
-</div>
+<!-- End Login -->
+ <div class="container app" id="show2">
+    <div class="row app-one">
+
+      <div class="col-sm-4 side">
+        <div class="side-one">
+          <!-- Heading -->
+          <div class="row heading">
+            <div class="col-sm-3 col-xs-3 heading-avatar">
+              <div class="heading-avatar-icon">
+                <img src="/img/p.jpg">
+              </div>
+            </div>
+          			<div class="col-sm-8 col-xs-8 heading-name">
+          				<a class="heading-name-meta heading-enlace" id="tunombre"></a>
+          				<span class="heading-online" id="tuestado"></span>
+          			</div>
+          		
+         	<!--
+            <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
+              <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+            </div>
+            <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
+              <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
+            </div>-->
+          </div>
+          <!-- Heading End -->
+
+          <!-- SearchBox -->
+          <div class="row searchBox">
+            <div class="col-sm-12 searchBox-inner">
+              <div class="form-group has-feedback">
+                <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Box End -->
+          <!-- sideBar -->
+          <div class="row sideBar" id="conectados">
+          	<div class="row sideBar-body">
+          		<div class="col-sm-3 col-xs-3 sideBar-avatar">
+          			<div class="avatar-icon">
+          				<img src="/img/p.jpg">
+          			</div>
+          		</div>
+	          	<div class="col-sm-9 col-xs-9 sideBar-main">
+	          		<div class="row">
+	          			<div class="col-sm-8 col-xs-8 sideBar-name">
+	          				<span class="name-meta">Chat general</span>
+	          				<span class="heading-online">Online</span>
+	          			</div>
+	          		</div>
+	         	</div>
+          	</div>
+          </div>
+          <!-- Sidebar End -->
+        </div>
+      </div>
+        
+
+
+      <!-- New Message Sidebar End -->
+      
+      <!-- Conversation Start -->
+      <div class="col-sm-8 conversation" id="convers">
+        <!-- Heading -->
+        <div class="row heading">
+          <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+            <div class="heading-avatar-icon">
+              <img src="/img/p.jpg">
+            </div>
+          </div>
+          <div class="col-sm-8 col-xs-7 heading-name">
+            <a class="heading-name-meta heading-enlace">Chat General
+            </a>
+            <span class="heading-online">Online</span>
+          </div>
+          <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+            <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <!-- Heading End -->
+
+        <!-- Message Box -->
+        
+        <div class="row message" id="conversacion">
+        </div>
+        
+
+        <!-- Message Box End -->
+
+        <!-- Reply Box -->
+        <div class="row reply">
+          <div class="col-sm-9 col-xs-9 reply-main">
+            <textarea class="form-control" rows="1" id="comment" placeholder="Escribe tu mensaje aquí"></textarea>
+          </div>
+        </div>
+        <!-- Reply Box End -->
+      </div>
+      <!-- Conversation End -->
+    </div>
+    <!-- App One End -->
+  </div>
+
 
     
 </body>
