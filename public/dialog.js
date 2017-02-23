@@ -34,13 +34,13 @@ function reply(id){
   		}
 	});
 }
-function escribirDialog(id){
-	var elemChat = $('<div class="row message-body"><div class="col-sm-12 message-main-sender"><div class="sender"><div class="col-sm-8 col-xs-7 message-name">'+socket.nombre+'</div><div class="message-text">'+$('#comment'+id).val()+'</div><span class="message-time pull-right">'+fecha()+'</span></div></div></div>');
+function escribirDialog(id, nombre){
+	var elemChat = $('<div class="row message-body"><div class="col-sm-12 message-main-sender"><div class="sender"><div class="col-sm-8 col-xs-7 message-name">'+nombre+'</div><div class="message-text">'+$('#comment'+id).val()+'</div><span class="message-time pull-right">'+fecha()+'</span></div></div></div>');
 	$('#mens'+id).append(elemChat);
 }
 function enviarMensajePrivado(id){
-    escribirDialog(id);
     socket.emit('mensajePriv', $('#comment'+id).val(), socket.nombre, id);
+    escribirDialog(id, socket.nombre);
     $('#comment'+id).val('');
     return false;
 }
