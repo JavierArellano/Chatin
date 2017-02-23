@@ -6,8 +6,6 @@ function escribirPantalla(){
 	var elemChat = $('<div class="row message-body"><div class="col-sm-12 message-main-sender"><div class="sender"><div class="col-sm-8 col-xs-7 message-name">'+datos.nombre+'</div><div class="message-text">'+$('#comment').val()+'</div><span class="message-time pull-right">'+fecha()+'</span></div></div></div>');
 	$('#conversacion').append(elemChat);
 	elemChat.get(0).scrollIntoView();
-	
-	/*.text($('#comment').val())*/
 }
 function mostrar(){
 	datos.nombre = $('#nombre').val();
@@ -57,7 +55,12 @@ socket.on('usuario', function(listaConectados){
 	}
 });
 socket.on('disconnect', function(nombre){
-	var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name"> El usuario '+nombre+' se ha desconectado.</div></div>');
+	var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-disconnect"> El usuario '+nombre+' se ha desconectado.</div></div>');
+	$('#conversacion').append( elemChat );
+    elemChat.get(0).scrollIntoView();
+});
+socket.on('conectado', function(nombre){
+	var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-connect"> El usuario '+nombre+' se ha conectado.</div></div>');
 	$('#conversacion').append( elemChat );
     elemChat.get(0).scrollIntoView();
 });

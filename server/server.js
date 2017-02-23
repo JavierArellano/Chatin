@@ -27,6 +27,7 @@ io.on('connection', function(socket){
 		user.id=socket.id
 		listaConectados.push(user);
 		io.emit('usuario',listaConectados);
+		socket.broadcast.emit('conectado', user.nombre);
 		//console.log(listaConectados);
 	})
 	socket.on('mensaje', function(data, nombre){
@@ -39,4 +40,4 @@ io.on('connection', function(socket){
 	})
 })
 //puerto en el que estoy escuchando
-server.listen(/*3000 || */process.env.PORT);
+server.listen(3000 || process.env.PORT);

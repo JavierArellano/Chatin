@@ -438,6 +438,16 @@ body {
 	color: blue;
 	font-weight: bold;
 }
+.message-name-disconnect {
+	padding: 0 !important;
+	color: red;
+	font-weight: bold;
+}
+.message-name-connect {
+	padding: 0 !important;
+	color: green;
+	font-weight: bold;
+}
 .message-text {
   margin: 0 !important;
   padding: 5px !important;
