@@ -41,4 +41,4 @@ io.on('connection', function(socket){
 	})
 })
 //puerto en el que estoy escuchando
-server.listen(3000 || process.env.PORT);
+server.listen(/*3000 || */process.env.PORT);
