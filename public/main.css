@@ -14,6 +14,13 @@ body {
   background: url("http://shurl.esy.es/y") no-repeat fixed center;
   background-size: cover;
 }
+/*Dialog*/
+
+.chat-priv {
+	background-color: #f2f2f2;
+	width: 300px !important;
+    max-height: 350px !important;
+}
 /*Login*/
 .form-signin
 {

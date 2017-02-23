@@ -17,7 +17,8 @@ function borrarUser(ID){
 io.on('connection', function(socket){
 	let user = {};
 	socket.on('mensajePriv', function(texto, nombre, id){
-		socket.broadcast.to(id).emit('mensajePriv', texto, nombre, id);
+		console.log('id otro: ', id, 'id mia: ', socket.id);
+		socket.broadcast.to(id).emit('mensajePriv', texto, socket.nombre, socket.id);
 	})
 	socket.on('usuario', function(datos){
 		socket.nombre=datos.nombre;
@@ -40,4 +41,4 @@ io.on('connection', function(socket){
 	})
 })
 //puerto en el que estoy escuchando
-server.listen(/*3000 ||*/ process.env.PORT);
+server.listen(/*3000 || */process.env.PORT);
