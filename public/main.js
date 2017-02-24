@@ -5,7 +5,7 @@ var listaUserId=[];
 function escribirPantalla(){
 	var elemChat = $('<div class="row message-body"><div class="col-sm-12 message-main-sender"><div class="sender"><div class="col-sm-8 col-xs-7 message-name">'+datos.nombre+'</div><div class="message-text">'+$('#comment').val()+'</div><span class="message-time pull-right">'+fecha()+'</span></div></div></div>');
 	$('#conversacion').append(elemChat);
-	elemChat.get(0).scrollIntoView();
+	//elemChat.get(0).scrollIntoView();
 }
 function mostrar(){
 	datos.nombre = $('#nombre').val();
@@ -14,6 +14,7 @@ function mostrar(){
 	$('#tuestado').text(datos.estado);
 	enviarUsuario();
 	$('#show1').hide();
+	$('#show2').show();
 }
 function fecha(){
 	let fecha = new Date();
@@ -54,24 +55,35 @@ socket.on('usuario', function(listaConectados){
 socket.on('disconnect', function(nombre){
 	var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-disconnect"> El usuario '+nombre+' se ha desconectado.</div></div>');
 	$('#conversacion').append( elemChat );
-    elemChat.get(0).scrollIntoView();
+    //elemChat.get(0).scrollIntoView();
 });
 socket.on('conectado', function(nombre){
 	var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-connect"> El usuario '+nombre+' se ha conectado.</div></div>');
 	$('#conversacion').append( elemChat );
-    elemChat.get(0).scrollIntoView();
+    //elemChat.get(0).scrollIntoView();
 });
 socket.on('mensaje', function(msg, nombre){
     var elemChat = $('<div class="row message-body"><div class="col-sm-12 message-main-receiver"><div class="receiver"><div class="col-sm-8 col-xs-7 message-name">'+nombre+'</div><div class="message-text">'+msg+'</div><span class="message-time pull-right">'+fecha()+'</span></div></div></div>');
     $('#conversacion').append( elemChat );
-    elemChat.get(0).scrollIntoView();
+    //elemChat.get(0).scrollIntoView();
 });
 
+function finescrib(){
+	socket.emit('noEscribiendo');
+	intervalo=null;
+}
 
 window.onload = function(){
 	$('#comment').keypress(function( event ) {
   		if ( event.keyCode == 13 ) {
      		enviarMensaje();
-  		}
+  		}/*else{
+  			if (!intervalo){
+  				socket.emit('escribiendo');
+  			}else{
+  				clearTimeout(intervalo);
+  			}
+  			intervalo = setTimeout(finescrib, 1000);
+  		}*/
 	});
 }

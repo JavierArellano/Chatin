@@ -16,8 +16,7 @@ function borrarUser(ID){
 }
 io.on('connection', function(socket){
 	let user = {};
-	socket.on('mensajePriv', function(texto, nombre, id){
-		console.log('id otro: ', id, 'id mia: ', socket.id);
+	socket.on('mensajePriv', function(texto, id){
 		socket.broadcast.to(id).emit('mensajePriv', texto, socket.nombre, socket.id);
 	})
 	socket.on('usuario', function(datos){

@@ -15,11 +15,29 @@ body {
   background-size: cover;
 }
 /*Dialog*/
+.ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 0;
+    background: none;
+    zoom: 1;
+    border: solid 1px black;
+}
+.ui-dialog .ui-dialog-titlebar {
+    border: solid black 1px;
+	background-color: #eeeeee;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ui-widget-content {
+    border:none;
+}
 
 .chat-priv {
 	background-color: #f2f2f2;
 	width: 300px !important;
     max-height: 350px !important;
+    overflow-y: auto;
 }
 /*Login*/
 .form-signin
