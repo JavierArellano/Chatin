@@ -87,7 +87,7 @@ function finescrib(){
 	intervalo=null;
 }
 
-function mostrarImg(id){
+function mostrarImg(id='#u'){
 	ids=['#a','#g','#h','#p','#s','#u'];
 	for (i of ids){
 		if (i == id) {
