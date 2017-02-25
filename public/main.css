@@ -89,6 +89,12 @@ body {
     font-weight: 400;
     display: block;
 }
+.cont-img {
+	max-width: 330px;
+	display: flex;
+	flex-wrap: wrap;
+	height: auto;
+}
 .profile-img
 {
     width: 96px;

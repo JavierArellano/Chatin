@@ -22,6 +22,7 @@ io.on('connection', function(socket){
 	socket.on('usuario', function(datos){
 		socket.nombre=datos.nombre;
 		socket.estado=datos.estado;
+		user.imagen=datos.imagen;
 		user.nombre=socket.nombre;
 		user.estado=socket.estado;
 		user.id=socket.id
@@ -39,5 +40,5 @@ io.on('connection', function(socket){
 		io.emit('disconnect', socket.nombre);
 	})
 })
-//puerto en el que estoy escuchando
+//puerto en el que estoy escuchando 
 server.listen(/*3000 || */process.env.PORT);
