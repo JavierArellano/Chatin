@@ -100,6 +100,7 @@ function mostrarImg(id='#u'){
 }
 
 window.onload = function(){
+	mostrarImg();
 	$('#a').click( () => mostrarImg(id='#a') );
 	$('#g').click( () => mostrarImg(id='#g') );
 	$('#h').click( () => mostrarImg(id='#h') );
