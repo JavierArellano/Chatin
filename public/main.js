@@ -12,7 +12,7 @@ function mostrar(){
 	datos.estado = $('#estado').val();
 	$('#tunombre').text(datos.nombre);
 	$('#tuestado').text(datos.estado);
-	$('#tuimagen').prop('src', datos.imagen);
+	$('#tuimagen').prop('src', '/img/'+datos.imagen);
 	enviarUsuario();
 	$('#show1').hide();
 	$('#show2').show();
@@ -45,6 +45,7 @@ socket.on('usuario', function(listaConectados){
 		if(user.id == socket.id){
 			listaUserId.push(user);
 		}else{
+			console.log(user.imagen);
 			var elemUser = $('<div class="row sideBar-body" id="user'+user.id+'"><div class="col-sm-3 col-xs-3 sideBar-avatar"><div class="avatar-icon"><img src="/img/'+user.imagen+'"></div></div><div class="col-sm-9 col-xs-9 sideBar-main"><div class="row"><div class="col-sm-8 col-xs-8 sideBar-name"><span class="name-meta">'+user.nombre+'</span><span class="heading-online">'+ user.estado +'</span></div><div class="col-sm-4 col-xs-4 pull-right sideBar-time"><span class="time-meta pull-right">'+fecha()+'</span></div></div></div></div>')
 			$('#conectados').append(elemUser);
 			user.elemId = '#user'+user.id;
@@ -89,7 +90,7 @@ function mostrarImg(id){
 			$(i).css('border','');
 		}
 	}
-	datos.imagen = $(id).prop('src');
+	datos.imagen = $(id).prop('src').split('/').pop();
 }
 
 window.onload = function(){
