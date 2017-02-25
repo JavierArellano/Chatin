@@ -1,4 +1,5 @@
 var socket = io();
+var intervalo=0;
 datos={};
 var listaUserId=[];
 
@@ -45,7 +46,6 @@ socket.on('usuario', function(listaConectados){
 		if(user.id == socket.id){
 			listaUserId.push(user);
 		}else{
-			console.log(user.imagen);
 			var elemUser = $('<div class="row sideBar-body" id="user'+user.id+'"><div class="col-sm-3 col-xs-3 sideBar-avatar"><div class="avatar-icon"><img src="/img/'+user.imagen+'"></div></div><div class="col-sm-9 col-xs-9 sideBar-main"><div class="row"><div class="col-sm-8 col-xs-8 sideBar-name"><span class="name-meta">'+user.nombre+'</span><span class="heading-online">'+ user.estado +'</span></div><div class="col-sm-4 col-xs-4 pull-right sideBar-time"><span class="time-meta pull-right">'+fecha()+'</span></div></div></div></div>')
 			$('#conectados').append(elemUser);
 			user.elemId = '#user'+user.id;
@@ -75,6 +75,12 @@ socket.on('mensaje', function(msg, nombre){
     $('#conversacion').append( elemChat );
     //elemChat.get(0).scrollIntoView();
 });
+socket.on('escribiendo', function(nombre){
+	$('#estGlobal').text(nombre+' está escribiendo');
+})
+socket.on('noEscribiendo', function(){
+	$('#estGlobal').text('Online');
+})
 
 function finescrib(){
 	socket.emit('noEscribiendo');
@@ -103,13 +109,13 @@ window.onload = function(){
 	$('#comment').keypress(function( event ) {
   		if ( event.keyCode == 13 ) {
      		enviarMensaje();
-  		}/*else{
+  		}else{
   			if (!intervalo){
-  				socket.emit('escribiendo');
+  				socket.emit('escribiendo',datos.nombre);
   			}else{
   				clearTimeout(intervalo);
   			}
   			intervalo = setTimeout(finescrib, 1000);
-  		}*/
+  		}
 	});
 }

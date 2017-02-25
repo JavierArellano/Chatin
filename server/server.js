@@ -34,6 +34,12 @@ io.on('connection', function(socket){
 	socket.on('mensaje', function(data, nombre){
 		socket.broadcast.emit('mensaje', data, nombre);
 	})
+	socket.on('escribiendo', function(nombre){
+		socket.broadcast.emit('escribiendo', nombre);
+	})
+	socket.on('noEscribiendo', function(){
+		socket.broadcast.emit('noEscribiendo');
+	})
 	socket.on('disconnect', function(){
 		borrarUser(socket.id);
 		io.emit('usuario',listaConectados);
