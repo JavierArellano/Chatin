@@ -60,7 +60,7 @@ socket.on('disconnect', function(nombre){
 		$('#conversacion').append( elemChat );
     	//elemChat.get(0).scrollIntoView();
     }else{
-		var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-disconnect">Y yo volé de él, pero vole de él por acá, por la arbolada.</div></div>');
+		var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-disconnect">Se reventó todito, y el servidor se fué a la puta.</div></div>');
 		$('#conversacion').append( elemChat );
     	//elemChat.get(0).scrollIntoView();
     }
