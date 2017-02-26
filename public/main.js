@@ -11,12 +11,14 @@ function escribirPantalla(){
 function mostrar(){
 	datos.nombre = $('#nombre').val();
 	datos.estado = $('#estado').val();
-	$('#tunombre').text(datos.nombre);
-	$('#tuestado').text(datos.estado);
-	$('#tuimagen').prop('src', '/img/'+datos.imagen);
-	enviarUsuario();
-	$('#show1').hide();
-	$('#show2').show();
+	if (datos.nombre!='') {	
+		$('#tunombre').text(datos.nombre);
+		$('#tuestado').text(datos.estado);
+		$('#tuimagen').prop('src', '/img/'+datos.imagen);
+		enviarUsuario();
+		$('#show1').hide();
+		$('#show2').show();
+	}
 }
 function fecha(){
 	let fecha = new Date();
