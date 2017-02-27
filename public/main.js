@@ -6,7 +6,7 @@ var listaUserId=[];
 function escribirPantalla(){
 	var elemChat = $('<div class="row message-body"><div class="col-sm-12 message-main-sender"><div class="sender"><div class="col-sm-8 col-xs-7 message-name">'+datos.nombre+'</div><div class="message-text">'+$('#comment').val()+'</div><span class="message-time pull-right">'+fecha()+'</span></div></div></div>');
 	$('#conversacion').append(elemChat);
-	//elemChat.get(0).scrollIntoView();
+	elemChat.get(0).scrollIntoView();
 }
 function mostrar(){
 	datos.nombre = $('#nombre').val();
@@ -60,22 +60,22 @@ socket.on('disconnect', function(nombre){
 	if (nombre!='transport close'){
 		var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-disconnect"> El usuario '+nombre+' se ha desconectado.</div></div>');
 		$('#conversacion').append( elemChat );
-    	//elemChat.get(0).scrollIntoView();
+    	elemChat.get(0).scrollIntoView();
     }else{
 		var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-disconnect">Se reventó todito, y el servidor se fué a la puta.</div></div>');
 		$('#conversacion').append( elemChat );
-    	//elemChat.get(0).scrollIntoView();
+    	elemChat.get(0).scrollIntoView();
     }
 });
 socket.on('conectado', function(nombre){
 	var elemChat = $('<div class="row message-body"><div class="col-sm-8 col-xs-7 text-center message-name-connect"> El usuario '+nombre+' se ha conectado.</div></div>');
 	$('#conversacion').append( elemChat );
-    //elemChat.get(0).scrollIntoView();
+    elemChat.get(0).scrollIntoView();
 });
 socket.on('mensaje', function(msg, nombre){
     var elemChat = $('<div class="row message-body"><div class="col-sm-12 message-main-receiver"><div class="receiver"><div class="col-sm-8 col-xs-7 message-name">'+nombre+'</div><div class="message-text">'+msg+'</div><span class="message-time pull-right">'+fecha()+'</span></div></div></div>');
     $('#conversacion').append( elemChat );
-    //elemChat.get(0).scrollIntoView();
+    elemChat.get(0).scrollIntoView();
 });
 socket.on('escribiendo', function(nombre){
 	$('#estGlobal').text(nombre+' está escribiendo');
