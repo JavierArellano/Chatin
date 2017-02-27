@@ -9,7 +9,7 @@ function abrirChatPriv(e){
 		let nombre = listaUserId[pos].nombre;
 		console.log(nombre, ':', id);
 	if(!$('#'+id).length){
-		$('#convers').append($('<div id="dialog" title="Chat privado con: '+nombre+'"><div class="col-sm-8 conversation chat-priv" id="'+id+'"></div></div>'));
+		$('#privao').append($('<div id="dialog" title="Chat privado con: '+nombre+'"><div class="col-sm-8 privaoation chat-priv" id="'+id+'"></div></div>'));
 		message(id);
 		reply(id);
 		$( "#dialog" ).dialog();
@@ -22,7 +22,7 @@ function abrirChatPrivResp(nombre, id){
 	//datos de la persona que me ha hablado
 	let prueba = '#'+id;
 	if(!$(prueba).length){
-		$('#convers').append($('<div id="dialog" title="Chat privado con: '+nombre+'"><div class="col-sm-8 conversation chat-priv" id="'+id+'"></div></div>'));
+		$('#privao').append($('<div id="dialog" title="Chat privado con: '+nombre+'"><div class="col-sm-8 conversation chat-priv" id="'+id+'"></div></div>'));
 		message(id);
 		reply(id);
 		$( "#dialog" ).dialog();
