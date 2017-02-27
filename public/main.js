@@ -109,6 +109,7 @@ window.onload = function(){
 	$('#p').click( () => mostrarImg(id='#p') );
 	$('#s').click( () => mostrarImg(id='#s') );
 	$('#u').click( () => mostrarImg(id='#u') );
+	$('#arreglar').click(()=>$('.ui-dialog').hide());
 	$('#comment').keypress(function( event ) {
   		if ( event.keyCode == 13 ) {
      		enviarMensaje();
